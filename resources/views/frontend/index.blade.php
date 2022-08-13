@@ -4,7 +4,7 @@
             <div class="max-w-7xl w-6/12 mt-5 mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="pt-1 pl-4 bg-white border-b border-gray-200">
-                           <span class="text-xs"><a href="#" class="text-blue-700">{{$post->user->name}}</a> post</span>
+                           <span class="text-xs"><a href="{{route('post.user',$post->user)}}" class="text-blue-700">{{$post->user->name}}</a> post</span>
                           <a href="{{route('post.show',$post)}}">
                               <p class="block text-xl pr-1"> {{$post->title}}</p>
                           </a>
@@ -26,7 +26,7 @@
                  </div>
              </div>
         @endforelse
-        @if($posts)
+        @if($posts && method_exists($posts,'links'))
             <div class="max-w-7xl w-6/12 mt-5 mx-auto sm:px-6 lg:px-8">
                       {{$posts->links()}}
             </div>
