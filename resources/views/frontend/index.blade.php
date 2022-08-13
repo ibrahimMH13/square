@@ -24,7 +24,6 @@
              </div>
         @endforelse
         @if($posts)
-
             <div class="max-w-7xl w-6/12 mt-5 mx-auto sm:px-6 lg:px-8">
                       {{$posts->links()}}
             </div>
