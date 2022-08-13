@@ -5,16 +5,9 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
                 </div>
             </div>
 
@@ -22,7 +15,15 @@
             @if (Route::has('login'))
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     @auth
-                        <x-dropdown align="right" width="48">
+
+                        <!-- Navigation Links -->
+                            <div class="hidden space-x-8 sm:-my-px mr-5 sm:ml-10 sm:flex">
+                                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-nav-link>
+                                <a href="{{ route('home') }}" class="text-sm pt-1 text-gray-700 dark:text-gray-500 ml-4 {{request()->routeIs('home')?'text-blue-700':''}}">Home</a>
+                            </div>
+                            <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
                                     class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
@@ -53,10 +54,11 @@
                             </x-slot>
                         </x-dropdown>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 ml-4 {{request()->routeIs('home')?'text-blue-700':''}}">Home</a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 ml-4">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500">Register</a>
                         @endif
                     @endauth
 
@@ -103,7 +105,8 @@
                     </form>
                 </div>
             @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                <a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 ml-3 underline">Home</a>
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline ml-4">Log in</a>
 
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>

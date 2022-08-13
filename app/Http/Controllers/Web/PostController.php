@@ -14,10 +14,10 @@ class PostController extends Controller
      * @param User $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(User $user)
+    public function index()
     {
          return view('frontend.index')->with([
-            'posts' => $user->posts()->get()
+            'posts' => auth()->user()->posts()->get()
         ]);
     }
 
@@ -46,6 +46,12 @@ class PostController extends Controller
     {
         return view('frontend.post.show')->with([
             'post' => $post
+        ]);
+    }
+
+    public function getPostsBy(User $user){
+        return view('frontend.index')->with([
+            'posts' => $user->posts()->get()
         ]);
     }
 
