@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title')->index();
+            $table->string('slug')->index();
             $table->text('body');
             $table->unsignedInteger('user_id')->index();
             $table->timestamps();
