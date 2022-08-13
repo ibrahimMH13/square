@@ -21,6 +21,7 @@ class Post extends Model
        'slug',
        'body',
        'user_id',
+       'api_published_at',
     ];
 
     public static $roles = [

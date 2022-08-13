@@ -77,7 +77,21 @@ return [
             'emoji' => ':boom:',
             'level' => env('LOG_LEVEL', 'critical'),
         ],
-
+        //third party logger
+        'THIRD_PARTY_API_INFO' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/third_api/infos/info.log'),
+            'level' => 'info',
+            'days' => 7,
+            'permission' => 0664,
+        ],
+        'THIRD_PARTY_API_ERROR' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/third_api/errors/error.log'),
+            'level' => 'error',
+            'days' => 7,
+            'permission' => 0664,
+        ],
         'papertrail' => [
             'driver' => 'monolog',
             'level' => env('LOG_LEVEL', 'debug'),

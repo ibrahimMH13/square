@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->index();
             $table->text('body');
             $table->unsignedInteger('user_id')->index();
+            $table->time('api_published_at')->nullable();
             $table->timestamps();
         });
     }
