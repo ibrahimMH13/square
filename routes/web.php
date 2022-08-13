@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::resource('/post', PostController::class);
 Route::get('post/user/{user}', [PostController::class,'getPostsBy'])->name('post.user');
-
-Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth'])->name('dashboard');
+Route::group(['middleware'=>'auth'],function (){
+    Route::resource('/post', PostController::class);
+    Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth'])->name('dashboard');
+});
 
 require __DIR__.'/auth.php';
