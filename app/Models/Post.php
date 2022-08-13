@@ -19,6 +19,11 @@ class Post extends Model
        'body',
        'user_id',
     ];
+
+    public static $roles = [
+      'title' =>'required' ,
+      'body'  =>'required'
+    ];
     public static function boot()
     {
         parent::boot();
@@ -34,5 +39,9 @@ class Post extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeLastPost($query){
+      return  $query->orderBy('id','desc');
     }
 }

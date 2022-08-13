@@ -16,30 +16,22 @@ class PostController extends Controller
      */
     public function index()
     {
-         return view('frontend.index')->with([
+         return view('frontend.post.index')->with([
             'posts' => auth()->user()->posts()->get()
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+     public function create()
     {
-        //
+       return view('frontend.post.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePostRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StorePostRequest $request)
     {
-        //
+       $data = $request->validated();
+       $data['user_id'] = auth()->id();
+       Post::create($data);
+       return redirect()->route('dashboard');
     }
 
      public function show(Post $post)
