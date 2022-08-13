@@ -59,7 +59,12 @@ class FetchPostFromApi extends Command
                  Logger::error($exception, 'THIRD_PARTY_API_ERROR');
              }
          }
-        Logger::info('FETCH_DATA_FROM_THIRD_PARTY_API_STATUS#',['status','OK','TOTAL'=>count($data),'SAVED'=>$saved,'NOT_SAVED'=>$notSaved],'THIRD_PARTY_API_INFO');
+        Logger::info('FETCH_DATA_FROM_THIRD_PARTY_API_STATUS#',[
+            'status','OK',
+            'TOTAL'=>count($data),
+            'SAVED'=>$saved
+            ,'NOT_SAVED'=>$notSaved],
+            'THIRD_PARTY_API_INFO');
         $this->info('DONE');
      }
 }
