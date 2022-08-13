@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index(){
         return view('frontend.index')->with([
-            'posts' => Post::lastPost()->paginate(10),
+            'posts' => Post::filter(request())->paginate(10)
         ]);
     }
 }

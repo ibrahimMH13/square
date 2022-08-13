@@ -17,6 +17,9 @@
                 </div>
             </div>
         </div>
-        <x-post-list class="w-3/5" :posts="$posts"/>
+        <div class="flex w-full">
+            <x-filter class="w-4/12 flex items-start mt-0 m-auto" />
+            <x-post-list class="w-3/5" :posts="$posts"/>
+         </div>
     </div>
 </x-app-layout>

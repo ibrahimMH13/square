@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Filter\Filters\PostFilters;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 /**
@@ -44,4 +47,9 @@ class Post extends Model
     public function scopeLastPost($query){
       return  $query->orderBy('id','desc');
     }
+
+    public function scopeFilter(Builder $builder,Request $request,$otherFilters =[]){
+         return (new PostFilters($request))->add($otherFilters)->filter($builder);
+    }
+
 }

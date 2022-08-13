@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
          return view('frontend.post.index')->with([
-            'posts' => auth()->user()->posts()->get()
+            'posts' => auth()->user()->posts()->filter(request())->paginate(10)
         ]);
     }
 
